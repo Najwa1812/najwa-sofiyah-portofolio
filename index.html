@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Najwa Sofiyah | Personal Portfolio</title>
+  <style>
+    :root {
+      --pink: #d98fa7;
+      --deep-pink: #b96886;
+      --cream: #fffaf7;
+      --soft: #fcecef;
+      --text: #4b3b42;
+      --muted: #8b737d;
+      --white: #ffffff;
+      --line: #f0dce2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,250,247,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 0;
+    }
+    .logo { font-size: 1.4rem; font-weight: bold; color: var(--deep-pink); }
+    .nav-links { display: flex; gap: 24px; font-family: Arial, sans-serif; font-size: .9rem; }
+    .nav-links a:hover { color: var(--deep-pink); }
+
+    .hero {
+      min-height: 88vh; display: grid; place-items: center;
+      padding: 70px 0;
+      background: radial-gradient(circle at 85% 15%, #f9dce5, transparent 28%),
+                  linear-gradient(135deg, #fffaf7, #fff1f4);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; align-items: center; }
+    .eyebrow { color: var(--deep-pink); letter-spacing: 3px; text-transform: uppercase; font: 600 .75rem Arial, sans-serif; }
+    h1 { font-size: clamp(3rem, 8vw, 6rem); line-height: 1.05; margin: 16px 0 22px; font-weight: 500; }
+    h1 span { color: var(--deep-pink); font-style: italic; }
+    .hero p { max-width: 590px; font-size: 1.1rem; color: var(--muted); }
+    .buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+    .btn {
+      display: inline-block; padding: 12px 22px; border-radius: 30px;
+      font-family: Arial, sans-serif; font-size: .9rem; transition: .2s;
+      border: 1px solid var(--deep-pink);
+    }
+    .btn-primary { background: var(--deep-pink); color: white; }
+    .btn-outline { color: var(--deep-pink); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px #d98fa733; }
+
+    .profile-card {
+      background: var(--white); padding: 38px; border-radius: 120px 120px 24px 24px;
+      text-align: center; box-shadow: 0 20px 60px #d98fa71f;
+      border: 1px solid var(--line);
+    }
+    .initials {
+      width: 180px; height: 180px; margin: auto; border-radius: 50%;
+      display: grid; place-items: center; background: var(--soft);
+      color: var(--deep-pink); font-size: 4rem; font-style: italic;
+      border: 8px solid white; outline: 1px solid var(--line);
+    }
+    .profile-card h3 { margin-top: 22px; font-size: 1.5rem; }
+    .profile-card p { color: var(--muted); font: .9rem Arial, sans-serif; }
+
+    section { padding: 95px 0; }
+    .section-title { margin-bottom: 42px; }
+    .section-title small { color: var(--deep-pink); font: 600 .75rem Arial, sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+    h2 { font-size: 2.6rem; font-weight: 500; margin-top: 8px; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }
+    .about-box { background: var(--soft); padding: 35px; border-radius: 20px; }
+    .about-box h3 { font-size: 1.5rem; margin-bottom: 10px; }
+    .muted { color: var(--muted); }
+
+    .timeline { border-left: 1px solid var(--line); padding-left: 28px; }
+    .item { position: relative; margin-bottom: 35px; }
+    .item::before {
+      content: ""; position: absolute; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--deep-pink); left: -34px; top: 9px;
+    }
+    .date { color: var(--deep-pink); font: 600 .8rem Arial, sans-serif; letter-spacing: 1px; }
+    .item h3 { margin: 5px 0; font-size: 1.25rem; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      padding: 30px; background: white; border: 1px solid var(--line);
+      border-radius: 18px; transition: .2s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px #d98fa71a; }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--muted); font: .95rem Arial, sans-serif; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 12px; }
+    .skill { padding: 10px 17px; border-radius: 25px; background: var(--soft); color: var(--deep-pink); font-family: Arial, sans-serif; font-size: .9rem; }
+
+    .contact {
+      background: #fff0f3; text-align: center; border-top: 1px solid var(--line);
+    }
+    .socials { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+    .socials a { padding: 10px 18px; background: white; border: 1px solid var(--line); border-radius: 25px; font-family: Arial, sans-serif; font-size: .9rem; }
+    footer { text-align: center; padding: 25px; color: var(--muted); font: .85rem Arial, sans-serif; }
+
+    @media (max-width: 800px) {
+      .nav-inner { flex-direction: column; gap: 12px; }
+      .nav-links { gap: 12px; flex-wrap: wrap; justify-content: center; font-size: .78rem; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero { min-height: auto; }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 65px 0; }
+      h2 { font-size: 2rem; }
+      .profile-card { max-width: 360px; margin: auto; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">NS.</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#organization">Organization</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Personal Portfolio</div>
+        <h1>Hi, I'm <span>Najwa.</span></h1>
+        <p>An English Education student at Universitas Muhammadiyah Malang with an interest in communication, digital content, education, and creative projects.</p>
+        <div class="buttons">
+          <a href="#contact" class="btn btn-primary">Let's Connect</a>
+          <a href="#cv" class="btn btn-outline">Download CV</a>
+          <a href="#experience" class="btn btn-outline">View Experience</a>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="initials">NS</div>
+        <h3>Najwa Sofiyah</h3>
+        <p>S1 English Education · UMM</p>
+        <p>Communication · Content · Education</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-title"><small>01 — About Me</small><h2>A little about me.</h2></div>
+        <div class="about-grid">
+          <div class="about-box">
+            <h3>Creative mind, meaningful work.</h3>
+            <p class="muted">I enjoy working on projects that combine communication, creativity, and education.</p>
+          </div>
+          <p class="muted">Through campus organizations, part-time work, and content creation, I continue to develop my skills in teamwork, public communication, digital content, and event support.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-title"><small>02 — Education</small><h2>My academic journey.</h2></div>
+        <div class="card">
+          <div class="date">UNDERGRADUATE · S1</div>
+          <h3>English Education — Universitas Muhammadiyah Malang</h3>
+          <p>Developing skills in English language, teaching, communication, and educational technology.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-title"><small>03 — Experience</small><h2>What I've been doing.</h2></div>
+        <div class="timeline">
+          <div class="item"><div class="date">2026 · PRESENT</div><h3>Part-Time — Humas UMM</h3><p class="muted">Supporting university public relations activities, including web news, WordPress content, event coverage, and documentation/archive work.</p></div>
+          <div class="item"><div class="date">2026</div><h3>Digital Team UMM</h3><p class="muted">Contributing to digital content and creative communication projects as part of the campus digital team.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="organization">
+      <div class="container">
+        <div class="section-title"><small>04 — Organization</small><h2>Growing through collaboration.</h2></div>
+        <div class="cards">
+          <div class="card"><h3>BEM FPSH UMM</h3><p>Participating in student organization activities and communication-oriented projects within the Faculty of Education, Science, and Humanities.</p></div>
+          <div class="card"><h3>Putri Putri Kampus UMM</h3><p>Top 5 Putri Putri Kampus UMM 2026, with experience in public speaking, campaign activities, teamwork, and university events.</p></div>
+          <div class="card"><h3>Campus Projects</h3><p>Exploring creative projects that connect education, communication, and digital media.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title"><small>05 — Skills & Interests</small><h2>Things I enjoy doing.</h2></div>
+        <div class="skills">
+          <span class="skill">Public Speaking</span><span class="skill">Communication</span><span class="skill">Content Creation</span><span class="skill">Social Media</span><span class="skill">Event Support</span><span class="skill">Writing</span><span class="skill">English</span><span class="skill">Canva</span><span class="skill">Digital Content</span><span class="skill">Education</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-title"><small>06 — Portfolio / Projects</small><h2>Selected interests.</h2></div>
+        <div class="cards">
+          <div class="card"><h3>Digital Content</h3><p>Creative communication and social media projects for campus and personal development.</p></div>
+          <div class="card"><h3>Public Relations</h3><p>Web news, event coverage, documentation, and communication support.</p></div>
+          <div class="card"><h3>Education & English</h3><p>Learning, teaching, and exploring educational technology through academic experiences.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cv">
+      <div class="container" style="text-align:center">
+        <div class="section-title"><small>CV</small><h2>My Curriculum Vitae.</h2></div>
+        <p class="muted">Tambahkan file CV PDF kamu nanti dengan mengganti link tombol ini.</p>
+        <a href="#" class="btn btn-primary" onclick="alert('Upload file CV PDF terlebih dahulu untuk mengaktifkan tombol ini.'); return false;">Download CV</a>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-title"><small>07 — Contact</small><h2>Let's connect.</h2></div>
+        <p class="muted">Interested in collaborating, working together, or simply connecting? Feel free to reach out through my social media.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/najwasofiyah?stkn=MWQ2enphbnRtaGw3dw==" target="_blank">Instagram</a>
+          <a href="https://www.tiktok.com/@najwasfyh?_r=1&_t=ZS-99j7wwx8CuY" target="_blank">TikTok</a>
+          <a href="https://www.linkedin.com/in/najwa-sofiyah-283375434" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Najwa Sofiyah · Personal Portfolio</footer>
+</body>
+</html>
